@@ -2,7 +2,7 @@
 
 **Web Reconnaissance Automation Tool for Penetration Testers & Bug Bounty Hunters**
 
-Auto-Recon is a comprehensive, modular reconnaissance tool that automates the entire web application reconnaissance process. It collects subdomains, resolves IPs, discovers URLs, performs directory fuzzing, probes ports, and **generates a beautiful interactive HTML report**.
+Auto-Recon is a comprehensive, modular reconnaissance tool that automates the entire web application reconnaissance process. It collects subdomains, resolves IPs, discovers URLs, performs directory fuzzing, probes ports, and **generates interactive HTML report**.
 
 ---
 
