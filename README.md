@@ -45,7 +45,7 @@ Auto-Recon is a comprehensive, modular reconnaissance tool that automates the en
 
 Clone the repository
 ```bash
-git clone https://github.com/yourusername/auto-recon.git
+git clone https://github.com/Prof445/auto-recon.git
 cd auto-recon
 ```
 Run installation script
