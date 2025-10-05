@@ -1,0 +1,25 @@
+# Scan Results
+recon_results/
+
+# Temporary files
+*.tmp
+*.log
+*.bak
+*.backup
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Environment files
+.env
+config.local
+
+# API keys (if any)
+api_keys.txt
