@@ -345,7 +345,7 @@ This tool is for educational and authorized security testing purposes only. Alwa
 ## 📧 Contact
 
 Created by **@Prof445**  
-GitHub: [github.com/Prof445/auto-recon](https://github.com/Prof445/)
+GitHub: [github.com/Prof445](https://github.com/Prof445/)
 
 ---
 
