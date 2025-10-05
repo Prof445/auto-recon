@@ -65,7 +65,7 @@ auto-recon -d example.com
 
 This runs all phases and generates an interactive HTML report.
 
-(If above command doesn't work you may use ```bash ./auto-recon.sh -d example.com ```)
+(If above command doesn't work you may use ```./auto-recon.sh -d example.com```)
 
 ### With API Keys
 ```bash
