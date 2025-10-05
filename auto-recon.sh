@@ -10,7 +10,7 @@
 #                                                       #
 #  Web Recon Automation Tool v1.0.0                     #
 #  Created for Penetration Testers & Bug Bounty Hunters #
-#                                                       #
+#  Created by @Prof445                                  #
 #########################################################
 
 set -uo pipefail  # Removed -e flag to handle errors manually
@@ -98,6 +98,7 @@ EOF
     echo -e "${RESET}"
     echo -e "${CYAN} Web Recon Automation Tool ${YELLOW}v${VERSION}${RESET}"
     echo -e "${CYAN} Created for Penetration Testers & Bug Bounty Hunters${RESET}"
+    echo -e "${CYAN} Created by @Prof445${RESET}"
     echo -e " ${DIM}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${RESET}\n"
 }
 
