@@ -8,8 +8,8 @@
 #  / ___ \ |_| | || (_) |_____| |  _ <  __/ (_| (_) | | | |#
 # /_/   \_\__,_|\__\___/        |_| \_\___|\___\___/|_| |_|#
 #                                                       #
-#  Professional Web Recon Automation Tool v1.0.0       #
-#  Created for Pentesters & Bug Bounty Hunters         #
+#  Web Recon Automation Tool v1.0.0                     #
+#  Created for Penetration Testers & Bug Bounty Hunters #
 #                                                       #
 #########################################################
 
@@ -96,8 +96,8 @@ show_banner() {
                                                             
 EOF
     echo -e "${RESET}"
-    echo -e "${CYAN} Professional Web Recon Automation Tool ${YELLOW}v${VERSION}${RESET}"
-    echo -e "${CYAN} Created for Pentesters & Bug Bounty Hunters${RESET}"
+    echo -e "${CYAN} Web Recon Automation Tool ${YELLOW}v${VERSION}${RESET}"
+    echo -e "${CYAN} Created for Penetration Testers & Bug Bounty Hunters${RESET}"
     echo -e " ${DIM}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${RESET}\n"
 }
 
