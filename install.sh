@@ -22,7 +22,7 @@ cat << "EOF"
  /_/   \_\__,_|\__\___/        |_| \_\___|\___\___/|_| |_|
 
 
- Professional Web Recon Automation Tool v1.0.0
+ Web Recon Automation Tool v1.0.0
  Created for Penetration Testers & Bug Bounty Hunters
  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
