@@ -63,7 +63,7 @@ chmod +x install.sh
 auto-recon -d example.com
 ```
 
-This runs all phases and generates a complete report.
+This runs all phases and generates an interactive HTML report.
 
 ### With API Keys
 ```bash
@@ -345,7 +345,7 @@ This tool is for educational and authorized security testing purposes only. Alwa
 ## 📧 Contact
 
 Created by **@Prof445**  
-GitHub: [github.com/Prof445/auto-recon](https://github.com/Prof445/auto-recon)
+GitHub: [github.com/Prof445/auto-recon](https://github.com/Prof445/)
 
 ---
 
