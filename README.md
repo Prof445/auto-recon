@@ -44,116 +44,78 @@ Auto-Recon is a comprehensive, modular reconnaissance tool that automates the en
 ### Quick Install
 
 Clone the repository
+```bash
 git clone https://github.com/yourusername/auto-recon.git
 cd auto-recon
-
+```
 Run installation script
+```bash
 chmod +x install.sh
 ./install.sh
-
-Reload shell
-source ~/.bashrc
-
-
-### Manual Installation
-
-**Requirements:**
-- Ubuntu/Debian/Kali Linux (or similar)
-- Go 1.21+ 
-- Python 3.x
-- curl, jq, git
-
-**Install Go Tools:**
-
-Subdomain enumeration
-go install -v github.com/projectdiscovery/subfinder/v2/cmd/subfinder@latest
-go install github.com/tomnomnom/assetfinder@latest
-
-DNS & HTTP
-go install -v github.com/projectdiscovery/dnsx/cmd/dnsx@latest
-go install -v github.com/projectdiscovery/httpx/cmd/httpx@latest
-
-URL discovery
-go install github.com/tomnomnom/waybackurls@latest
-pip3 install uro
-
-Pattern matching
-go install github.com/tomnomnom/gf@latest
-
-Fuzzing
-go install github.com/ffuf/ffuf/v2@latest
-
-
-**Install GF Patterns:**
-
-mkdir -p ~/.gf
-git clone https://github.com/1ndianl33t/Gf-Patterns
-cp Gf-Patterns/*.json ~/.gf/
-
-
-**Install SecLists (Optional but Recommended):**
-
-sudo apt install seclists
-
-sudo apt install seclists
-
-OR
-sudo git clone https://github.com/danielmiessler/SecLists.git /usr/share/seclists
-
+```
 
 ---
 
 ## 🎯 Usage
 
 ### Basic Scan
-
+```bash
 auto-recon -d example.com
-
+```
 
 This runs all phases and generates a complete report.
 
 ### With API Keys
-
+```bash
 auto-recon -d example.com
-
+```
 You'll be prompted for API keys (optional)
 
 
 ### Run Specific Modules
 
 Only subdomains and ports
+```bash
 auto-recon -d example.com --only subdomains,ports
-
+```
 Only URLs and fuzzing
+```bash
 auto-recon -d example.com --only urls,fuzzing
-
+```
 
 ### Advanced Options
 
 With proxychains
+```bash
 auto-recon -d example.com --proxychains
-
+```
 Debug mode (save logs)
+```bash
 auto-recon -d example.com --debug
-
+```
 Custom threads and timeout
+```bash
 auto-recon -d example.com -t 50 --timeout 15
-
+```
 Rate limiting
+```bash
 auto-recon -d example.com --rate-limit 50 --delay 500
-
+```
 Resume interrupted scan
+```bash
 auto-recon --resume -d example.com
-
+```
 
 ### Check Tools
 
 Verify all tools are installed
+```bash
 auto-recon --check-tools
-
+```
 Install missing tools
+```bash
 auto-recon --install-tools
-
+```
 
 ---
 
@@ -161,7 +123,7 @@ auto-recon --install-tools
 
 After running a scan on `example.com`, the following structure is created:
 
-
+```bash
 recon_results/
 └── example.com_2025-10-05_00-30-45/
 ├── report.html # Interactive HTML report
@@ -193,7 +155,7 @@ recon_results/
 │ ├── debug.log # Debug logs (if --debug)
 │ └── errors.log # Error logs
 └── .auto-recon.state # Resume state file
-
+```
 
 ---
 
@@ -211,7 +173,7 @@ The generated HTML report includes:
 2. **Subdomains** - All live subdomains with search
 3. **IPs** - All discovered IP addresses
 4. **URLs** - Interesting URLs with file types
-5. **Vulnerabilities** - Grouped by type (XSS, SQLi, LFI, IDOR)
+5. **Potential Vulnerabilities** - Grouped by type (XSS, SQLi, LFI, IDOR)
 6. **Fuzzing** - Discovered directories and files
 7. **Ports** - Open web services
 
@@ -247,47 +209,38 @@ Edit `COMMON_PORTS` in `auto-recon.sh` to customize port scanning:
 COMMON_PORTS="80,443,8080,8443,3000,5000,8000"
 
 
-
-### Wordlists
-
-Auto-Recon automatically detects wordlists in this order:
-1. `/usr/share/seclists/Discovery/Web-Content/raft-medium-directories.txt`
-2. `/usr/share/seclists/Discovery/Web-Content/directory-list-2.3-medium.txt`
-3. `/usr/share/seclists/Discovery/Web-Content/common.txt`
-4. `/usr/share/wordlists/dirb/common.txt`
-
 ---
 
 ## 📝 Examples
 
 ### Example 1: Full Reconnaissance
-
+```bash
 auto-recon -d hackerone.com
-
+```
 
 **Output:**
 - 150+ subdomains discovered
 - 45 unique IPs
 - 5,000+ URLs from Wayback
 - 234 interesting files found
-- 12 potential XSS, 8 SQLi, 3 LFI
+- 12 potential attack endpoints for: XSS, 8 SQLi, 3 LFI
 - 456 paths from fuzzing
 - 23 open web services
 
 **Report:** `recon_results/hackerone.com_2025-10-05_01-30-00/report.html`
 
 ### Example 2: Quick Subdomain Scan
-
+```bash
 auto-recon -d example.com --only subdomains
-
+```
 
 **Duration:** ~2-3 minutes  
 **Output:** Subdomains only, fast execution
 
 ### Example 3: Stealth Scan
-
+```bash
 auto-recon -d example.com --proxychains --delay 1000 --rate-limit 10
-
+```
 
 **Features:**
 - Routes through proxychains
@@ -298,8 +251,9 @@ auto-recon -d example.com --proxychains --delay 1000 --rate-limit 10
 
 Scan interrupted during fuzzing phase
 Resume from where it left off
+```bash
 auto-recon --resume -d example.com
-
+```
 
 ---
 
@@ -327,11 +281,13 @@ auto-recon --resume -d example.com
 ### Tools Not Found
 
 Check tool status
+```bash
 auto-recon --check-tools
-
+```
 Install missing tools
+```bash
 auto-recon --install-tools
-
+```
 
 ### Permission Errors
 
@@ -342,11 +298,13 @@ Use your regular user account
 ### Network Issues
 
 Enable debug mode to see detailed logs
+```bash
 auto-recon -d example.com --debug
-
+```
 Check error logs
+```bash
 cat recon_results/example.com_*/logs/errors.log
-
+```
 
 ### Empty Results
 
