@@ -10,24 +10,30 @@ RED="\033[31m"
 GREEN="\033[32m"
 YELLOW="\033[33m"
 CYAN="\033[36m"
+DIM="\033[2m"
 RESET="\033[0m"
 
 echo -e "${CYAN}"
 cat << "EOF"
-     _         _                ____                      
-    / \  _   _| |_ ___         |  _ \ ___  ___ ___  _ __  
-   / _ \| | | | __/ _ \ _____  | |_) / _ \/ __/ _ \| '_ \ 
+     _         _                ____
+    / \  _   _| |_ ___         |  _ \ ___  ___ ___  _ __
+   / _ \| | | | __/ _ \ _____  | |_) / _ \/ __/ _ \| '_ \
   / ___ \ |_| | || (_) |_____| |  _ <  __/ (_| (_) | | | |
  /_/   \_\__,_|\__\___/        |_| \_\___|\___\___/|_| |_|
-                                                            
+
+
+ Professional Web Recon Automation Tool v1.0.0
+ Created for Penetration Testers & Bug Bounty Hunters
+ ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 echo -e "${RESET}"
+
 echo -e "${CYAN}Auto-Recon Installation Script${RESET}\n"
 
 # Check if running as root
 if [[ $EUID -eq 0 ]]; then
-   echo -e "${YELLOW}[!] Please do not run this script as root${RESET}"
-   exit 1
+    echo -e "${YELLOW}[!] Please do not run this script as root${RESET}"
+    exit 1
 fi
 
 # Detect OS
@@ -43,7 +49,6 @@ echo -e "${GREEN}[✓]${RESET} Detected OS: $OS"
 
 # Check for required system packages
 echo -e "\n${CYAN}[*] Checking system dependencies...${RESET}"
-
 SYSTEM_DEPS=("curl" "git" "jq" "python3" "python3-pip" "wget")
 
 case $OS in
@@ -75,13 +80,13 @@ echo -e "\n${CYAN}[*] Checking Go installation...${RESET}"
 if ! command -v go &> /dev/null; then
     echo -e "${YELLOW}[!] Go is not installed${RESET}"
     echo -e "${CYAN}[*] Installing Go...${RESET}"
-    
+
     GO_VERSION="1.21.5"
     wget -q https://go.dev/dl/go${GO_VERSION}.linux-amd64.tar.gz
     sudo rm -rf /usr/local/go
     sudo tar -C /usr/local -xzf go${GO_VERSION}.linux-amd64.tar.gz
     rm go${GO_VERSION}.linux-amd64.tar.gz
-    
+
     # Add to PATH for both Bash and Zsh
     for rc_file in ~/.bashrc ~/.zshrc; do
         if [[ -f "$rc_file" ]] && ! grep -q "/usr/local/go/bin" "$rc_file"; then
@@ -89,10 +94,10 @@ if ! command -v go &> /dev/null; then
             echo 'export PATH=$PATH:$HOME/go/bin' >> "$rc_file"
         fi
     done
-    
+
     export PATH=$PATH:/usr/local/go/bin
     export PATH=$PATH:$HOME/go/bin
-    
+
     echo -e "${GREEN}[✓] Go installed successfully${RESET}"
 else
     echo -e "${GREEN}[✓] Go is already installed ($(go version))${RESET}"
@@ -126,6 +131,7 @@ echo -e "${CYAN}[7/8] Installing ffuf...${RESET}"
 go install github.com/ffuf/ffuf/v2@latest
 
 echo -e "${CYAN}[8/8] Installing uro...${RESET}"
+
 # Try pipx first (recommended for Kali/newer systems)
 if command -v pipx &> /dev/null; then
     pipx install uro 2>/dev/null && echo -e "${GREEN}[✓] uro installed via pipx${RESET}" || \
@@ -148,6 +154,7 @@ for rc_file in ~/.bashrc ~/.zshrc; do
         echo 'export PATH=$PATH:$HOME/.local/bin' >> "$rc_file"
     fi
 done
+
 export PATH=$PATH:$HOME/.local/bin
 
 # Verify uro installation
@@ -196,48 +203,57 @@ if [[ -f "$CURRENT_DIR/auto-recon.sh" ]]; then
     echo -e "${GREEN}[✓] Made auto-recon.sh executable${RESET}"
 fi
 
-# Create symlink in /usr/local/bin (optional, requires sudo)
+# Create system-wide command
 echo -e "\n${CYAN}[*] Creating system-wide command...${RESET}"
 if sudo ln -sf "$CURRENT_DIR/auto-recon.sh" /usr/local/bin/auto-recon 2>/dev/null; then
     echo -e "${GREEN}[✓] Created system-wide command: auto-recon${RESET}"
-    echo -e "${GREEN}[✓] You can now run: ${YELLOW}auto-recon -d example.com${RESET}${GREEN} from anywhere${RESET}"
 else
     echo -e "${YELLOW}[!] Could not create system-wide command (needs sudo)${RESET}"
-    echo -e "${YELLOW}[!] Run from this directory: ${CYAN}./auto-recon.sh -d example.com${RESET}"
 fi
+
+# =============================================================================
+# Post-Installation: Simple One-Command Reload
+# =============================================================================
 
 echo -e "\n${GREEN}╔════════════════════════════════════════════╗${RESET}"
 echo -e "${GREEN}║                                            ║${RESET}"
-echo -e "${GREEN}║  ✓ Installation Complete!                 ║${RESET}"
+echo -e "${GREEN}║  ✓ Installation Complete!                  ║${RESET}"
 echo -e "${GREEN}║                                            ║${RESET}"
 echo -e "${GREEN}╚════════════════════════════════════════════╝${RESET}"
 
-echo -e "\n${CYAN}Tool Location:${RESET}"
-echo -e "  ${YELLOW}$CURRENT_DIR${RESET}"
+echo -e "\n${CYAN}Tool Location:${RESET} ${YELLOW}$CURRENT_DIR${RESET}"
 
-echo -e "\n${CYAN}Usage Options:${RESET}"
-
-if [[ -f /usr/local/bin/auto-recon ]]; then
-    echo -e "  ${GREEN}Option 1 (Anywhere):${RESET} ${YELLOW}auto-recon -d example.com${RESET}"
-    echo -e "  ${GREEN}Option 2 (Local):${RESET}    ${YELLOW}cd $CURRENT_DIR && ./auto-recon.sh -d example.com${RESET}"
+# Detect shell
+CURRENT_SHELL=$(basename "$SHELL")
+if [[ "$OS" == "kali" ]] || [[ "$CURRENT_SHELL" == "zsh" ]]; then
+    RELOAD_CMD="source ~/.zshrc"
+    SHELL_NAME="Zsh"
 else
-    echo -e "  ${GREEN}Run from tool directory:${RESET}"
-    echo -e "  ${YELLOW}cd $CURRENT_DIR${RESET}"
-    echo -e "  ${YELLOW}./auto-recon.sh -d example.com${RESET}"
+    RELOAD_CMD="source ~/.bashrc"
+    SHELL_NAME="Bash"
 fi
 
-echo -e "\n${CYAN}Quick Test:${RESET}"
-if [[ -f /usr/local/bin/auto-recon ]]; then
-    echo -e "  ${YELLOW}auto-recon --check-tools${RESET}"
-else
-    echo -e "  ${YELLOW}cd $CURRENT_DIR && ./auto-recon.sh --check-tools${RESET}"
-fi
+echo -e "${CYAN}Shell:${RESET} $SHELL_NAME"
+echo ""
 
-echo -e "\n${CYAN}For help:${RESET}"
-if [[ -f /usr/local/bin/auto-recon ]]; then
-    echo -e "  ${YELLOW}auto-recon --help${RESET}"
-else
-    echo -e "  ${YELLOW}./auto-recon.sh --help${RESET}"
-fi
+# Create a one-line reload + verify command
+VERIFY_CMD="$RELOAD_CMD && auto-recon --check-tools"
 
+echo -e "${YELLOW}╔══════════════════════════════════════════════════════════════════╗${RESET}"
+echo -e "${YELLOW}║  ⚠️  COPY AND RUN THE BELOW COMMAND TO ACTIVATE TOOLS:           ║${RESET}"
+echo -e "${YELLOW}╚══════════════════════════════════════════════════════════════════╝${RESET}"
+echo ""
+echo -e "  ${GREEN}${VERIFY_CMD}${RESET}"
+echo ""
+echo -e "${DIM}This will reload your shell config and verify all tools are working.${RESET}"
+echo ""
+echo -e "${CYAN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${RESET}"
+echo ""
+echo -e "${CYAN}After running the above command:${RESET}"
+echo ""
+echo -e "${CYAN}Quick Start:${RESET}"
+echo -e "  ${YELLOW}auto-recon -d example.com${RESET}"
+echo ""
+echo -e "${CYAN}For Help:${RESET}"
+echo -e "  ${YELLOW}auto-recon --help${RESET}"
 echo ""
