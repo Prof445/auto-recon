@@ -54,7 +54,7 @@ chmod +x install.sh
 ./install.sh
 ```
 
-Reload your shell config and verify all tools are working <small>(Below Command is for Kali-Linux use ```source ~/.bashrc``` for other Linux)</small>
+Reload your shell config and verify all tools are working <sub>(Below Command is for Kali-Linux, use ```source ~/.bashrc``` for other Linux)</sub>
 ```bash
 source ~/.zshrc && ./auto-recon.sh --check-tools
 ```
