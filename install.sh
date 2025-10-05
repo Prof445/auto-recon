@@ -24,6 +24,7 @@ cat << "EOF"
 
  Web Recon Automation Tool v1.0.0
  Created for Penetration Testers & Bug Bounty Hunters
+ Created by @Prof445
  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 echo -e "${RESET}"
