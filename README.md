@@ -65,16 +65,16 @@ source ~/.zshrc && ./auto-recon.sh --check-tools
 
 ### Basic Scan
 ```bash
-auto-recon -d example.com
+auto-recon -d hackerone.com
 ```
 
 This runs all phases and generates an interactive HTML report.
 
-<small>( If above command doesn't work you may use ```./auto-recon.sh -d example.com``` )</small>
+<small>( If above command doesn't work you may use ```./auto-recon.sh -d hackerone.com``` )</small>
 
 ### With API Keys
 ```bash
-auto-recon -d example.com
+auto-recon -d hackerone.com
 ```
 You'll be prompted for API keys (optional)
 
@@ -83,34 +83,34 @@ You'll be prompted for API keys (optional)
 
 Only subdomains and ports
 ```bash
-auto-recon -d example.com --only subdomains,ports
+auto-recon -d hackerone.com --only subdomains,ports
 ```
 Only URLs and fuzzing
 ```bash
-auto-recon -d example.com --only urls,fuzzing
+auto-recon -d hackerone.com --only urls,fuzzing
 ```
 
 ### Advanced Options
 
 With proxychains
 ```bash
-auto-recon -d example.com --proxychains
+auto-recon -d hackerone.com --proxychains
 ```
 Debug mode (save logs)
 ```bash
-auto-recon -d example.com --debug
+auto-recon -d hackerone.com --debug
 ```
 Custom threads and timeout
 ```bash
-auto-recon -d example.com -t 50 --timeout 15
+auto-recon -d hackerone.com -t 50 --timeout 15
 ```
 Rate limiting
 ```bash
-auto-recon -d example.com --rate-limit 50 --delay 500
+auto-recon -d hackerone.com --rate-limit 50 --delay 500
 ```
 Resume interrupted scan
 ```bash
-auto-recon --resume -d example.com
+auto-recon --resume -d hackerone.com
 ```
 
 ### Check Tools
@@ -128,11 +128,11 @@ auto-recon --install-tools
 
 ## 📁 Output Structure
 
-After running a scan on `example.com`, the following structure is created:
+After running a scan on `hackerone.com`, the following structure is created:
 
 ```bash
 recon_results/
-└── example.com_2025-10-05_00-30-45/
+└── hackerone.com_2025-10-05_00-30-45/
 ├── report.html # Interactive HTML report
 ├── subdomains/
 │ ├── all_subdomains.txt # All discovered subdomains
@@ -238,7 +238,7 @@ auto-recon -d hackerone.com
 
 ### Example 2: Quick Subdomain Scan
 ```bash
-auto-recon -d example.com --only subdomains
+auto-recon -d hackerone.com --only subdomains
 ```
 
 **Duration:** ~2-3 minutes  
@@ -246,7 +246,7 @@ auto-recon -d example.com --only subdomains
 
 ### Example 3: Stealth Scan
 ```bash
-auto-recon -d example.com --proxychains --delay 1000 --rate-limit 10
+auto-recon -d hackerone.com --proxychains --delay 1000 --rate-limit 10
 ```
 
 **Features:**
@@ -259,7 +259,7 @@ auto-recon -d example.com --proxychains --delay 1000 --rate-limit 10
 Scan interrupted during fuzzing phase
 Resume from where it left off
 ```bash
-auto-recon --resume -d example.com
+auto-recon --resume -d hackerone.com
 ```
 
 ---
@@ -306,11 +306,11 @@ Use your regular user account
 
 Enable debug mode to see detailed logs
 ```bash
-auto-recon -d example.com --debug
+auto-recon -d hackerone.com --debug
 ```
 Check error logs
 ```bash
-cat recon_results/example.com_*/logs/errors.log
+cat recon_results/hackerone.com_*/logs/errors.log
 ```
 
 ### Empty Results
