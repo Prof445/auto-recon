@@ -41,6 +41,10 @@ This runs all phases and **generates an interactive HTML report**.
 
 <small>( If above command doesn't work you may use ```./auto-recon.sh -d hackerone.com``` )</small>
 
+### 🎥 Results of auto-recon - Demo Video
+
+[![Watch the demo]](https://vimeo.com/1124984891?share=copy)
+
 ### With API Keys
 ```bash
 auto-recon -d hackerone.com
