@@ -62,8 +62,8 @@ run_directory_fuzzing() {
     if [[ -f "$live_subs" ]]; then
         local total_live=$(count_lines "$live_subs")
         if [[ $total_live -gt $max_subdomains ]]; then
-            echo "        ${YELLOW}Note: Found $total_live live subdomains, fuzzing first $max_subdomains${RESET}"
-            echo "        ${YELLOW}Use --max-fuzz $total_live to scan all subdomains${RESET}"
+            echo "        Note: Found $total_live live subdomains, fuzzing first $max_subdomains"
+            echo "        Use --max-fuzz $total_live to scan all subdomains"
         fi
     fi
     
