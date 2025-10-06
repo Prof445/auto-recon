@@ -231,51 +231,6 @@ COMMON_PORTS="80,443,8080,8443,3000,5000,8000"
 
 ---
 
-## 📝 Examples
-
-### Example 1: Full Reconnaissance
-```bash
-auto-recon -d hackerone.com
-```
-
-**Output:**
-- 150+ subdomains discovered
-- 45 unique IPs
-- 5,000+ URLs from Wayback
-- 234 interesting files found
-- 12 potential attack endpoints for: XSS, 8 SQLi, 3 LFI
-- 456 paths from fuzzing
-- 23 open web services
-
-**Report:** `recon_results/hackerone.com_2025-10-05_01-30-00/report.html`
-
-### Example 2: Quick Subdomain Scan
-```bash
-auto-recon -d hackerone.com --only subdomains
-```
-
-**Duration:** ~2-3 minutes  
-**Output:** Subdomains only, fast execution
-
-### Example 3: Stealth Scan
-```bash
-auto-recon -d hackerone.com --proxychains --delay 1000 --rate-limit 10
-```
-
-**Features:**
-- Routes through proxychains
-- 1 second delay between requests
-- Maximum 10 requests/second
-
-### Example 4: Resume Interrupted Scan
-
-Scan interrupted during fuzzing phase
-Resume from where it left off
-```bash
-auto-recon --resume -d hackerone.com
-```
-
----
 
 ## 🛡️ Best Practices
 
