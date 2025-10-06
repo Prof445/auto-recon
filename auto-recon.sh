@@ -107,7 +107,7 @@ show_help() {
 Usage: auto-recon [options] <domain>
 
 Required:
-  -d, --domain <domain>          Target domain (e.g., dell.com)
+  -d, --domain <domain>          Target domain (e.g., hackerone.com)
 
 Options:
   -o, --output <dir>             Output directory (default: ./recon_results)
@@ -140,16 +140,16 @@ Advanced:
 
 Examples:
   # Basic scan
-  auto-recon -d dell.com
+  auto-recon -d hackerone.com
   
   # Only subdomains and ports
-  auto-recon -d dell.com --only subdomains,ports
+  auto-recon -d hackerone.com --only subdomains,ports
   
   # With proxychains and debug
-  auto-recon -d dell.com --proxychains --debug
+  auto-recon -d hackerone.com --proxychains --debug
   
   # Resume interrupted scan
-  auto-recon --resume -d dell.com
+  auto-recon --resume -d hackerone.com
 
 EOF
 }
@@ -166,7 +166,7 @@ ask_api_keys() {
     echo ""
     
     # VirusTotal API Key
-    echo -ne "${CYAN}[?]${RESET} VirusTotal API key (optional): "
+    echo -ne "${CYAN}[?]${RESET} VirusTotal API key (press enter to skip): "
     read -r VT_API_KEY
     if [[ -n "$VT_API_KEY" ]]; then
         log_success "VirusTotal API key configured"
@@ -175,7 +175,7 @@ ask_api_keys() {
     fi
     
     # SecurityTrails API Key
-    echo -ne "${CYAN}[?]${RESET} SecurityTrails API key (optional): "
+    echo -ne "${CYAN}[?]${RESET} SecurityTrails API key (press enter to skip): "
     read -r ST_API_KEY
     if [[ -n "$ST_API_KEY" ]]; then
         log_success "SecurityTrails API key configured"
