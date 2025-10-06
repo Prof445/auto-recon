@@ -449,7 +449,7 @@ run_recon() {
     echo ""
     
     # Terminal clickable link (works in many modern terminals)
-    echo -e "   \033]8;;${file_url}\033\\${GREEN}Ctrl+Click here to open report${RESET}\033]8;;\033\\"
+    echo -e "   \033]8;;${file_url}\033\\Ctrl+Click here to open report\033]8;;\033\\"
     echo ""
     echo -e "   ${DIM}Or copy this URL:${RESET}"
     echo -e "   ${GREEN}$file_url${RESET}"
