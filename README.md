@@ -6,38 +6,6 @@ Auto-Recon is a comprehensive, modular reconnaissance tool that automates the en
 
 ---
 
-## ✨ Features
-
-### 🎯 Core Functionality
-- **Multi-Source Subdomain Enumeration** - 7+ sources (crt.sh, Certspotter, VirusTotal, SecurityTrails, AlienVault, Subfinder, Assetfinder)
-- **Smart Deduplication** - Tracks sources and eliminates duplicates
-- **IP Discovery** - Resolves subdomains and discovers IPs from passive DNS
-- **URL Collection** - Wayback Machine integration with intelligent filtering
-- **Directory Fuzzing** - Automated fuzzing with SecLists wordlists
-- **Port Probing** - Checks 30+ common web service ports
-- **Vulnerability Detection** - GF patterns for XSS, SQLi, LFI, IDOR, SSRF, etc.
-
-### 📊 Professional HTML Report
-- **Interactive Dashboard** - Beautiful UI with statistics cards
-- **Dark/Light Mode** - Theme toggle with persistence
-- **Tabbed Navigation** - Easy access to all results
-- **Search & Filter** - Find specific entries instantly
-- **Export to CSV** - Download any dataset
-- **Clickable URLs** - All URLs open in new tabs
-- **Charts & Visualizations** - Subdomain sources, vulnerability distribution
-- **Responsive Design** - Works on all devices
-
-### 🚀 Advanced Features
-- **Resume Capability** - Continue interrupted scans
-- **Modular Execution** - Run specific phases only
-- **Parallel Processing** - Fast execution with threading
-- **Proxychains Support** - Route through proxy
-- **Debug Mode** - Comprehensive logging
-- **Rate Limiting** - Control request speed
-- **Error Handling** - Automatic retries with exponential backoff
-- **API Integration** - Optional VirusTotal & SecurityTrails
-
----
 
 ## 📦 Installation
 
@@ -60,6 +28,7 @@ source ~/.zshrc && ./auto-recon.sh --check-tools
 ```
 
 ---
+
 
 ## 🎯 Usage
 
@@ -126,6 +95,7 @@ auto-recon --install-tools
 
 ---
 
+
 ## 📁 Output Structure
 
 After running a scan on `hackerone.com`, the following structure is created:
@@ -163,6 +133,39 @@ recon_results/
 │ └── errors.log # Error logs
 └── .auto-recon.state # Resume state file
 ```
+
+---
+
+## ✨ Features
+
+### 🎯 Core Functionality
+- **Multi-Source Subdomain Enumeration** - 7+ sources (crt.sh, Certspotter, VirusTotal, SecurityTrails, AlienVault, Subfinder, Assetfinder)
+- **Smart Deduplication** - Tracks sources and eliminates duplicates
+- **IP Discovery** - Resolves subdomains and discovers IPs from passive DNS
+- **URL Collection** - Wayback Machine integration with intelligent filtering
+- **Directory Fuzzing** - Automated fuzzing with SecLists wordlists
+- **Port Probing** - Checks 30+ common web service ports
+- **Vulnerability Detection** - GF patterns for XSS, SQLi, LFI, IDOR, SSRF, etc.
+
+### 📊 Professional HTML Report
+- **Interactive Dashboard** - Beautiful UI with statistics cards
+- **Dark/Light Mode** - Theme toggle with persistence
+- **Tabbed Navigation** - Easy access to all results
+- **Search & Filter** - Find specific entries instantly
+- **Export to CSV** - Download any dataset
+- **Clickable URLs** - All URLs open in new tabs
+- **Charts & Visualizations** - Subdomain sources, vulnerability distribution
+- **Responsive Design** - Works on all devices
+
+### 🚀 Advanced Features
+- **Resume Capability** - Continue interrupted scans
+- **Modular Execution** - Run specific phases only
+- **Parallel Processing** - Fast execution with threading
+- **Proxychains Support** - Route through proxy
+- **Debug Mode** - Comprehensive logging
+- **Rate Limiting** - Control request speed
+- **Error Handling** - Automatic retries with exponential backoff
+- **API Integration** - Optional VirusTotal & SecurityTrails
 
 ---
 
