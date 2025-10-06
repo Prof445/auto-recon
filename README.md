@@ -37,7 +37,7 @@ source ~/.zshrc && ./auto-recon.sh --check-tools
 auto-recon -d hackerone.com
 ```
 
-This runs all phases and generates an interactive HTML report.
+This runs all phases and **generates an interactive HTML report**.
 
 <small>( If above command doesn't work you may use ```./auto-recon.sh -d hackerone.com``` )</small>
 
