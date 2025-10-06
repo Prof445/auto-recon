@@ -43,7 +43,7 @@ This runs all phases and **generates an interactive HTML report**.
 
 ### 🎥 Results of auto-recon - Demo Video
 
-[![Watch the demo]](https://vimeo.com/1124984891?share=copy)
+[![Watch demo here](https://i.ibb.co/xKsgGBy8/Screenshot-2025-10-07-025246.png)](https://vimeo.com/1124984891?share=copy)
 
 ### With API Keys
 ```bash
